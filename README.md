@@ -31,6 +31,7 @@ Follow these steps to set up the Meme Spawner bot:
     * `token`: Your Discord bot's **private token**. Keep this secret!
     * `clientId`: Your bot's **Application ID**. You can find this in your Discord Developer Portal.
     * `ownerID`: Your **Discord user ID**. This gives you administrative control.
+    * `guildId`: Your **Guild ID**.
     * *Optional:* Explore other fields to customize the bot's behavior to your liking.
 
 4. **Permissions**
