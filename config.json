@@ -2,6 +2,7 @@
 	"token": "Discord-Token",
 	"ownerId": "Your-discord-ID",
 	"clientId": "Bots-Client-ID",
+	"guildId": "Your-Guild-ID",
 	"defaultMemeIntervalMinutes": 60,
 	"memesFolder": "./Memes",
 	"permissionsFile": "./settings/permissions.json",
