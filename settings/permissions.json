@@ -1,0 +1,8 @@
+{
+  "guilds": {
+    "your-guild-id": {
+      "allowedUserId": "Owner-ID",
+      "allowedRoleId": "Allowed-Role"
+    }
+}
+}

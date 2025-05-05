@@ -1,0 +1,6 @@
+{
+    "Guild_ID":{
+        "meme": "Channel_ID",
+        "authmeme": "Admin Channel_ID"
+    }
+}

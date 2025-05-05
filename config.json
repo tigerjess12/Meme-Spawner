@@ -1,0 +1,10 @@
+{
+	"token": "Discord-Token",
+	"ownerId": "Your-discord-ID",
+	"clientId": "Bots-Client-ID",
+	"defaultMemeIntervalMinutes": 60,
+	"memesFolder": "./Memes",
+	"permissionsFile": "./settings/permissions.json",
+	"sentMemesFile": "./data/sent_memes.json",
+	"channelAssignmentsFile": "./data/channel_assignments.json"
+}

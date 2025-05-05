@@ -1,0 +1,22 @@
+{
+  "name": "meme-spawner",
+  "version": "2.0.1",
+  "description": "Meme Poster",
+  "main": "index.js",
+  "author": "tigerjess12",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tigerjess12/Meme-Spawner.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tigerjess12/Meme-Spawner/issues"
+  },
+  "homepage": "https://github.com/tigerjess12/Meme-Spawner",
+  "dependencies": {
+    "discord.js": "^14.18.0",
+    "memefeed": "file:",
+    "node-fetch": "^2.7.0",
+    "uuid": "^11.1.0"
+  }
+}
