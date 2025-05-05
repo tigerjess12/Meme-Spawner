@@ -18,7 +18,7 @@ Follow these steps to set up the Meme Spawner bot:
 
 1.  **📥 Clone the Repository:**
     ```bash
-    git clone [https://github.com/tigerjess12/Meme-Spawner.git](https://github.com/tigerjess12/Meme-Spawner.git)
+    git clone https://github.com/tigerjess12/Meme-Spawner.git
     cd Meme-Spawner
     ```
 
