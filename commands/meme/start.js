@@ -35,11 +35,18 @@ function saveSentMemes(guildId, meme) {
             currentData[guildId] = [];
         }
 
-        currentData[guildId].push(meme);
+        // Check if the meme is already in the list
+        if (!currentData[guildId].includes(meme)) {
+            currentData[guildId].push(meme);
+            fs.writeFileSync(sentMemesFile, JSON.stringify(currentData, null, 2));
+        } else {
+            console.log(`Meme "${meme}" has already been sent for guild ${guildId}.`);
+        }
 
-        fs.writeFileSync(sentMemesFile, JSON.stringify(currentData, null, 2));
+        return currentData;
     } catch (error) {
         console.error('Error saving sent_memes.json:', error);
+        return null;
     }
 }
 
@@ -67,7 +74,7 @@ module.exports = {
         const channelId = interaction.channel.id;
         const minutes = interaction.options.getInteger('minutes') || defaultMemeIntervalMinutes;
 
-        if (!channelAssignments[guildId] || !channelAssignments[guildId].includes(channelId)) {
+        if (!channelAssignments[guildId] || channelAssignments[guildId].meme !== channelId) {
             await interaction.reply('This channel is not assigned for meme posting.');
             return;
         }
@@ -107,7 +114,7 @@ module.exports = {
 
         const interval = setInterval(async () => {
             const unsentMemes = fs.readdirSync(memesFolder).filter(file => !currentData[guildId].includes(file));
-
+        
             if (unsentMemes.length === 0) {
                 console.log('No unsent memes left. Stopping...');
                 clearInterval(interval);
@@ -115,14 +122,14 @@ module.exports = {
                 await interaction.followUp('All memes have been sent. Stopping meme posting.');
                 return;
             }
-
+        
             const randomMeme = unsentMemes[Math.floor(Math.random() * unsentMemes.length)];
             const memePath = path.join(memesFolder, randomMeme);
-
+        
             try {
                 console.log(`Sending meme: ${randomMeme}`);
                 await interaction.channel.send({ files: [memePath] });
-                saveSentMemes(guildId, randomMeme);
+                currentData = saveSentMemes(guildId, randomMeme); // Update currentData after saving
             } catch (error) {
                 console.error('Error sending meme:', error);
             }
