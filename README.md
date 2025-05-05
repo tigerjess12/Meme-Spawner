@@ -8,6 +8,7 @@ This is a Discord bot for sharing memes and bringing fun to your server. It's fu
 * `/stop`: Halt the automatic meme spawning.
 * `/setchannel`: Designate the specific channel where the bot will post memes.
 * `/fetchmeme`: Get a random meme on demand from reddit (Not very good)!
+* `/forcememe`: Get a random meme from your meme folder.
 * `/info`: Display information about the bot and creator (ME C:).
 
 
