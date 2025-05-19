@@ -21,8 +21,29 @@ const path = require('path');
 const { isUserAllowed } = require('../../utils/permissions');
 const { memesFolder, sentMemesFile, channelAssignmentsFile, defaultMemeIntervalMinutes } = require('../../config.json');
 
+const guildConfigFile = './data/guild_config.json';
+
 // Store intervals for each guild
 global.memeIntervals = {};
+
+function saveGuildConfig(guildId, intervalMinutes) {
+    try { 
+        let guildConfig = {};
+        if (fs.existsSync(guildConfigFile)){
+            guildConfig = JSON.parse(fs.readFileSync(guildConfigFile, "utf-8"));
+        }
+
+        if (!guildConfig[guildId]) {
+            guildConfig[guildId] = {};
+        }
+
+        guildConfig[guildId].memeIntervalMinutes = intervalMinutes;
+
+        fs.writeFileSync(guildConfigFile, JSON.stringify(guildConfig, null, 2));
+    } catch (error) {
+        console.error("Errror saving config", error);
+    }
+}
 
 function saveSentMemes(guildId, meme) {
     try {
@@ -78,6 +99,8 @@ module.exports = {
             await interaction.reply('This channel is not assigned for meme posting.');
             return;
         }
+
+        saveGuildConfig(guildId, minutes)
 
         let currentData = {};
         if (fs.existsSync(sentMemesFile)) {

@@ -16,7 +16,7 @@
 */
 
 const { SlashCommandBuilder } = require('discord.js');
-const { isUserAllowed } = require('../../settings/permissions.json');
+const { isUserAllowed } = require('../../utils/permissions');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -30,7 +30,7 @@ module.exports = {
 
         const guildId = interaction.guild.id;
 
-        if (global.memeIntervals[guildId]) {
+        if (global.memeIntervals && global.memeIntervals[guildId]) {
             clearInterval(global.memeIntervals[guildId]);
             delete global.memeIntervals[guildId];
             await interaction.reply('Meme posting has been stopped for this guild.');
